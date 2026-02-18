@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luis Fernando | Editor de Vídeo & Colorista</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="ue5-nav">
+        <div class="logo">LUIS FERNANDO <span class="ue-marker">|</span> <span class="sub-logo">DAVINCI RESOLVE</span></div>
+        <div class="nav-right">
+            <a href="#portfolio" class="nav-item-hide">PORTFÓLIO</a>
+            <a href="https://wa.me/5564999956181" class="btn-ue" target="_blank">ORÇAMENTO</a>
+        </div>
+    </nav>
+
+    <main class="viewport">
+        <div class="volumetric-light"></div>
+        
+        <section class="hero-ue">
+            <div class="content-wrapper">
+                <p class="top-label scroll-move" data-speed="0.3">PÓS-PRODUÇÃO DE ALTO NÍVEL</p>
+                <h1 class="scroll-move" data-speed="0.5">O FUTURO DA <br><span class="glow-text">NARRATIVA VISUAL</span></h1>
+                <p class="description scroll-move" data-speed="0.4">Transformando brutos em cinema através do DaVinci Resolve. Precisão técnica e estética imersiva para sua marca.</p>
+                <div class="actions scroll-move" data-speed="0.2">
+                    <a href="#portfolio" class="primary-btn">ASSISTIR SHOWREEL</a>
+                    <a href="https://wa.me/5564999956181" class="secondary-btn" target="_blank">FALAR COMIGO</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section id="portfolio" class="ue-grid-section">
+        <div class="grid-header">
+            <h2>PROJETOS SELECIONADOS</h2>
+            <div class="ue-line"></div>
+        </div>
+        
+        <div class="ue-grid">
+            <div class="ue-card" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=1000')"></div>
+                <div class="card-info">
+                    <span class="category">COLOR GRADING</span>
+                    <h3>Publicidade Cinematográfica</h3>
+                    <p class="play-hint">CLIQUE PARA ASSISTIR</p>
+                </div>
+            </div>
+            
+            <div class="ue-card" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=1000')"></div>
+                <div class="card-info">
+                    <span class="category">EDIÇÃO</span>
+                    <h3>Music Video High-End</h3>
+                    <p class="play-hint">CLIQUE PARA ASSISTIR</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="videoModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <iframe id="videoPlayer" src="" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 LUIS FERNANDO - EDITOR DE VÍDEO PROFISSIONAL</p>
+    </footer>
+
+    <script>
+        // Efeito de movimento suave no scroll
+        window.addEventListener('scroll', function() {
+            const scrollItems = document.querySelectorAll('.scroll-move');
+            let scrollTop = window.pageYOffset;
+            scrollItems.forEach(function(item) {
+                let speed = item.getAttribute('data-speed');
+                item.style.transform = 'translateY(' + -(scrollTop * speed) + 'px)';
+                item.style.opacity = 1 - (scrollTop / 800); 
+            });
+        });
+
+        // Controle do Pop-up de Vídeo
+        const modal = document.getElementById("videoModal");
+        const videoPlayer = document.getElementById("videoPlayer");
+        const closeModal = document.querySelector(".close-modal");
+
+        document.querySelectorAll('.ue-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const videoSrc = this.getAttribute('data-video');
+                videoPlayer.src = videoSrc + "?autoplay=1";
+                modal.style.display = "flex";
+            });
+        });
+
+        closeModal.onclick = function() {
+            modal.style.display = "none";
+            videoPlayer.src = "";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                videoPlayer.src = "";
+            }
+        }
+    </script>
+</body>
+</html>

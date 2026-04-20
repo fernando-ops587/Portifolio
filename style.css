@@ -15,13 +15,13 @@ body { background: var(--white); font-family: 'Inter', sans-serif; overflow-x: h
 .v-line { width: 1px; height: 60px; background: var(--dark); margin: 15px 0; }
 .v-sidebar span { writing-mode: vertical-rl; transform: rotate(180deg); opacity: 0.4; }
 
-/* REVEAL ANIMATIONS */
+/* REVEAL */
 .reveal { opacity: 0; transition: 0.8s ease-in-out; }
 .reveal.active { opacity: 1; }
 .reveal-content { transform: translateY(40px); transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1); }
 .reveal.active .reveal-content { transform: translateY(0); }
 
-/* HEADER GRID */
+/* GRID PRINCIPAL */
 .hero-grid { display: grid; grid-template-columns: 1.5fr 1fr; border-bottom: 10px solid var(--dark); }
 .hero-main-title { padding: 60px; }
 .terminal-tag { font-family: 'Space Mono'; background: var(--dark); color: white; display: inline-block; padding: 2px 8px; font-size: 12px; margin-bottom: 10px; }
@@ -38,7 +38,7 @@ body { background: var(--white); font-family: 'Inter', sans-serif; overflow-x: h
 .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 .tag-cloud span { font-family: 'Space Mono'; font-size: 10px; border: 1px solid var(--dark); padding: 2px 5px; }
 
-/* ABOUT SECTION */
+/* SOBRE */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 10px solid var(--dark); }
 .photo-container { padding: 60px; background: var(--beige); border-right: 10px solid var(--dark); }
 .parallax-frame { border: 10px solid var(--dark); background: var(--dark); position: relative; box-shadow: 20px 20px 0 var(--ocre); overflow: hidden; }
@@ -56,7 +56,7 @@ body { background: var(--white); font-family: 'Inter', sans-serif; overflow-x: h
 .stack-item { width: 35px; }
 .stack-item img { width: 100%; }
 
-/* BRUTALIST PROOF IMAGE (CODEPEN READY) */
+/* IMAGEM DE PROVA */
 .proof-image-wrapper {
     position: relative;
     border: 10px solid var(--dark);
@@ -68,7 +68,6 @@ body { background: var(--white); font-family: 'Inter', sans-serif; overflow-x: h
 .proof-img {
     width: 100%;
     display: block;
-    filter: contrast(1.1);
 }
 .img-tag {
     position: absolute;
@@ -80,10 +79,9 @@ body { background: var(--white); font-family: 'Inter', sans-serif; overflow-x: h
     font-family: 'Space Mono';
     font-weight: 900;
     border: 3px solid var(--dark);
-    z-index: 10;
 }
 
-/* MARQUEE & MASCOT */
+/* MARQUEE & MASCOTE */
 .marquee-wrapper { position: relative; margin: 120px 0; }
 .mascote-container { position: absolute; top: -60px; left: 15%; z-index: 100; }
 .mascote { width: 50px; height: 45px; background: var(--ocre); border: 5px solid var(--dark); position: relative; }
@@ -93,7 +91,7 @@ body { background: var(--white); font-family: 'Inter', sans-serif; overflow-x: h
 .marquee { background: var(--dark); color: white; padding: 30px 0; border-top: 5px solid var(--ocre); }
 .marquee-content { display: flex; white-space: nowrap; animation: scroll 40s linear infinite; font-family: 'Space Mono'; font-size: 2.5rem; font-weight: 900; }
 
-/* WORKS SECTION */
+/* WORKS */
 .work-section { padding: 80px; border-bottom: 10px solid var(--dark); }
 .big-section-label { font-size: 5rem; font-weight: 900; margin-bottom: 40px; }
 .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
@@ -114,8 +112,21 @@ body { background: var(--white); font-family: 'Inter', sans-serif; overflow-x: h
 @keyframes mascot-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
 .float-anim { animation: mascot-float 3s ease-in-out infinite; }
 
-/* RESPONSIVE */
-@media (max-width: 1000px) {
-    .hero-grid, .about-grid, .video-grid { grid-template-columns: 1fr; }
+/* RESPONSIVIDADE (CELULAR) */
+@media (max-width: 1024px) {
     .v-sidebar { display: none; }
+    .hero-grid, .about-grid, .video-grid { grid-template-columns: 1fr; }
+    .hero-main-title { padding: 40px 20px; }
+    .hero-sidebar-info { border-left: none; border-top: 10px solid var(--dark); }
+    .giant-text { font-size: 4rem; letter-spacing: -2px; }
+    .photo-container { padding: 30px; border-right: none; border-bottom: 10px solid var(--dark); }
+    .bio-text-container { padding: 30px; }
+    .section-title { font-size: 3rem; }
+    .work-section { padding: 40px 20px; }
+    .big-section-label { font-size: 3rem; }
+    .video-grid { gap: 30px; }
+    .proof-image-wrapper { max-width: 100%; }
+    .marquee-content { font-size: 1.5rem; }
+    .footer-brutal { padding: 60px 20px; }
+    .footer-email { font-size: 1.8rem; }
 }

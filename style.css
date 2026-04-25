@@ -2,7 +2,7 @@
     --ocre: #A6997A; --beige: #D9D2C5; --dark: #000000; --white: #FFFFFF;
 }
 
-/* Reset Global para evitar espaços em branco laterais */
+/* 1. RESET CRÍTICO: Impede qualquer vazamento lateral */
 * { 
     margin: 0; 
     padding: 0; 
@@ -12,7 +12,9 @@
 
 html, body {
     width: 100%;
-    overflow-x: hidden; /* Impede o scroll lateral */
+    max-width: 100%;
+    overflow-x: hidden; /* Isso mata o "arrastar pro lado" */
+    position: relative;
     background: var(--white);
     font-family: 'Inter', sans-serif;
     color: var(--dark);
@@ -20,7 +22,7 @@ html, body {
 
 .noise-overlay { position: fixed; inset: 0; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.1; pointer-events: none; z-index: 2000; }
 
-/* Sidebars - Somente Desktop */
+/* Sidebars - Escondidas por padrão, aparecem só no Desktop */
 .v-sidebar { 
     position: fixed; top: 0; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 500; font-family: 'Space Mono'; font-size: 10px; font-weight: 700;
 }
@@ -28,14 +30,16 @@ html, body {
 .v-line { width: 1px; height: 60px; background: var(--dark); margin: 15px 0; }
 .v-sidebar span { writing-mode: vertical-rl; transform: rotate(180deg); opacity: 0.4; }
 
+/* Container Principal */
 .container {
     width: 100%;
-    max-width: 100vw;
+    position: relative;
+    overflow-x: hidden;
 }
 
 /* Hero Section */
-.hero-grid { display: grid; grid-template-columns: 1.5fr 1fr; border-bottom: 10px solid var(--dark); }
-.hero-main-title { padding: 60px; }
+.hero-grid { display: grid; grid-template-columns: 1.5fr 1fr; border-bottom: 10px solid var(--dark); width: 100%; }
+.hero-main-title { padding: 60px; overflow: hidden; }
 .terminal-tag { font-family: 'Space Mono'; background: var(--dark); color: white; display: inline-block; padding: 2px 8px; font-size: 12px; margin-bottom: 10px; }
 .giant-text { font-size: clamp(3rem, 11vw, 13rem); font-weight: 900; line-height: 0.8; letter-spacing: -6px; }
 .giant-text span { color: var(--ocre); }
@@ -47,60 +51,54 @@ html, body {
 .label { font-family: 'Space Mono'; font-size: 11px; }
 .value-small { font-size: 2rem; font-weight: 900; line-height: 1; }
 
-/* Seções Gerais */
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 10px solid var(--dark); }
+/* About & Results */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 10px solid var(--dark); width: 100%; }
 .photo-container { padding: 60px; background: var(--beige); border-right: 10px solid var(--dark); }
 .bio-text-container { padding: 60px; }
 
-.work-section { padding: 80px; border-bottom: 10px solid var(--dark); }
+.work-section { padding: 80px; border-bottom: 10px solid var(--dark); width: 100%; }
 .big-section-label { font-size: clamp(2.5rem, 10vw, 5rem); font-weight: 900; margin-bottom: 40px; }
 
 .container-resultados-limpo { margin-top: 30px; width: 100%; max-width: 800px; }
 .imagem-limpa-final { width: 100%; height: auto; border: none; display: block; }
 
 /* Video Grid */
-.video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+.video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; width: 100%; padding: 20px; }
 .video-window { border: 10px solid var(--dark); background: #000; box-shadow: 20px 20px 0 var(--ocre); }
 .video-wrapper { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; }
 
-/* --- CORREÇÃO MOBILE --- */
+/* --- AJUSTE MOBILE TOTAL --- */
 @media (max-width: 1024px) {
     .v-sidebar { display: none; }
     
     .hero-grid, .about-grid, .video-grid { 
-        grid-template-columns: 1fr; /* Força uma coluna única que ocupa 100% */
-        width: 100%;
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
     }
     
     .hero-main-title { 
         padding: 40px 20px; 
-        border-bottom: 10px solid var(--dark);
         width: 100%;
+        overflow: hidden;
     }
     
+    /* Reduz o título para caber na largura da tela sem sobrar */
     .giant-text { 
-        font-size: 4rem; /* Tamanho fixo para mobile para evitar quebras */
+        font-size: clamp(2.5rem, 15vw, 4.5rem) !important;
         letter-spacing: -2px; 
-        line-height: 1;
+        word-break: break-word;
     }
     
-    .hero-sidebar-info { 
-        border-left: none; 
-        width: 100%;
-    }
-    
-    .photo-container { 
-        border-right: none; 
-        border-bottom: 10px solid var(--dark); 
-        padding: 30px 20px; 
-    }
-    
-    .bio-text-container, .work-section { 
-        padding: 40px 20px; 
-        width: 100%;
-    }
+    .hero-sidebar-info { border-left: none; width: 100%; }
+    .photo-container { border-right: none; border-bottom: 10px solid var(--dark); padding: 30px 20px; }
+    .bio-text-container, .work-section { padding: 40px 20px; width: 100%; }
 
-    .video-grid { gap: 40px; }
+    .video-grid { 
+        padding: 0;
+        gap: 40px; 
+    }
+    .video-window { box-shadow: 10px 10px 0 var(--ocre); }
 }
 
+/* Animações */
 @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }

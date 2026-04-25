@@ -2,7 +2,7 @@
     --ocre: #A6997A; --beige: #D9D2C5; --dark: #000000; --white: #FFFFFF;
 }
 
-/* RESET E TRAVA LATERAL */
+/* RESET E TRAVA DE LARGURA */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html, body {
@@ -16,15 +16,16 @@ html, body {
 
 .noise-overlay { position: fixed; inset: 0; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.1; pointer-events: none; z-index: 2000; }
 
-/* SIDEBARS DESKTOP */
+/* SIDEBARS (DESKTOP APENAS) */
 .v-sidebar { position: fixed; top: 0; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 500; font-family: 'Space Mono'; font-size: 10px; font-weight: 700; }
 .left-bar { left: 20px; } .right-bar { right: 20px; }
 .v-line { width: 1px; height: 60px; background: var(--dark); margin: 15px 0; }
 .v-sidebar span { writing-mode: vertical-rl; transform: rotate(180deg); opacity: 0.4; }
 
-/* HERO */
+/* HERO SECTION */
 .hero-grid { display: grid; grid-template-columns: 1.5fr 1fr; border-bottom: 10px solid var(--dark); }
-.hero-main-title { padding: 60px; }
+.hero-main-title { padding: 60px; overflow: hidden; }
+.terminal-tag { font-family: 'Space Mono'; background: var(--dark); color: white; display: inline-block; padding: 2px 8px; font-size: 12px; margin-bottom: 10px; }
 .giant-text { font-size: clamp(3rem, 11vw, 13rem); font-weight: 900; line-height: 0.8; letter-spacing: -6px; }
 .giant-text span { color: var(--ocre); }
 
@@ -32,9 +33,10 @@ html, body {
 .info-block { flex: 1; padding: 30px; border-bottom: 10px solid var(--dark); }
 .black-block { background: var(--dark); color: white; }
 .beige-block { background: var(--ocre); }
+.label { font-family: 'Space Mono'; font-size: 11px; }
 .value-small { font-size: 2rem; font-weight: 900; line-height: 1; }
 
-/* ABOUT & TECH STACK (Onde estão os ícones) */
+/* ABOUT SECTION & TECH STACK */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 10px solid var(--dark); }
 .photo-container { padding: 60px; background: var(--beige); border-right: 10px solid var(--dark); }
 .bio-text-container { padding: 60px; }
@@ -46,52 +48,63 @@ html, body {
     flex-wrap: wrap; 
 }
 
-/* TAMANHO DOS ÍCONES - DESKTOP */
+/* FIX PARA ÍCONES (UNREAL, BLENDER, ETC) */
 .stack-item { 
     width: 35px; 
     height: 35px; 
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 .stack-item img { 
     width: 100%; 
+    max-width: 100%;
     height: auto; 
     display: block;
 }
 .stack-item i { font-size: 32px; }
 
-/* RESULTS & VIDEOS */
+/* RESULTS SECTION */
 .work-section { padding: 80px; border-bottom: 10px solid var(--dark); }
+.big-section-label { font-size: clamp(2.5rem, 10vw, 5rem); font-weight: 900; margin-bottom: 40px; }
 .container-resultados-limpo { margin-top: 30px; width: 100%; max-width: 800px; }
+.metrics-label { font-family: 'Space Mono'; font-size: 12px; font-weight: 700; color: var(--ocre); margin-bottom: 15px; display: flex; align-items: center; }
+.metrics-label::before { content: ""; display: inline-block; width: 8px; height: 8px; background: var(--ocre); margin-right: 10px; }
 .imagem-limpa-final { width: 100%; height: auto; border: none; display: block; }
 
+/* VIDEO GRID */
 .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
 .video-window { border: 10px solid var(--dark); background: #000; box-shadow: 20px 20px 0 var(--ocre); }
-.video-wrapper { position: relative; width: 100%; aspect-ratio: 16/9; }
+.video-wrapper { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; }
 
-/* --- AJUSTE MOBILE FINAL (CORREÇÃO DE ÍCONES GIGANTES) --- */
+/* --- AJUSTES MOBILE (AQUI ONDE CORRIGE OS ÍCONES) --- */
 @media (max-width: 1024px) {
     .v-sidebar { display: none; }
     
-    .hero-grid, .about-grid, .video-grid { grid-template-columns: 1fr !important; width: 100%; }
+    .hero-grid, .about-grid, .video-grid { 
+        grid-template-columns: 1fr !important;
+        width: 100%;
+    }
     
-    .hero-main-title { padding: 40px 20px; overflow: hidden; }
+    .hero-main-title { padding: 40px 20px; }
     .giant-text { font-size: 4rem !important; letter-spacing: -2px; }
     
     .photo-container { border-right: none; border-bottom: 10px solid var(--dark); padding: 30px 20px; }
     .bio-text-container, .work-section { padding: 40px 20px; width: 100%; }
 
-    /* FORÇA O TAMANHO DOS ÍCONES NO MOBILE */
-    .tech-stack-black { gap: 15px; }
+    /* TRAVA DOS ÍCONES NO MOBILE */
     .stack-item { 
-        width: 30px !important; /* Aqui impedimos que fiquem gigantes */
+        width: 30px !important; 
         height: 30px !important;
     }
     .stack-item img { 
         width: 30px !important; 
         max-width: 30px !important;
+        height: auto !important;
     }
     .stack-item i { font-size: 28px !important; }
 
     .video-window { box-shadow: 10px 10px 0 var(--ocre); }
 }
+
+@keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }

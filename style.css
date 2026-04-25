@@ -52,23 +52,45 @@ body { background: var(--white); font-family: 'Inter', sans-serif; overflow-x: h
 .stack-item { width: 35px; }
 .stack-item img { width: 100%; }
 
-/* Seção de PROVEN RESULTS Limpa */
+/* SEÇÃO DE RESULTADOS LIMPA */
 .work-section { padding: 80px; border-bottom: 10px solid var(--dark); }
 .big-section-label { font-size: clamp(2.5rem, 10vw, 5rem); font-weight: 900; margin-bottom: 40px; }
 
-.proof-image-clean {
-    position: relative;
+.container-resultados-limpo {
+    margin-top: 30px;
+    width: 100%;
     max-width: 800px;
-    margin-top: 20px;
-    display: flex;
+    display: block;
 }
 
-.proof-img-minimal {
-    width: 100%;
-    height: auto;
+.metrics-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ocre);
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+}
+
+.metrics-label::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: var(--ocre);
+    margin-right: 10px;
+}
+
+.imagem-limpa-final {
+    width: 100% !important;
+    height: auto !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    background: transparent !important;
     display: block;
-    border: none;
-    box-shadow: none;
 }
 
 /* MARQUEE & MASCOTE */

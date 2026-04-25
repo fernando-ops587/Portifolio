@@ -92,8 +92,8 @@
                     <div class="tech-stack-black">
                         <div class="stack-item" title="Unreal Engine 5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unrealengine/unrealengine-original.svg"></div>
                         <div class="stack-item" title="Blender"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Blender_logo_no_text.svg"></div>
-                        <div class="stack-item" title="DaVinci Resolve" style="color: #61DAFB; font-size: 32px;"><i class="fa-solid fa-circle-nodes"></i></div>
-                        <div class="stack-item" title="Video Editing" style="color: #FF4500; font-size: 32px;"><i class="fa-solid fa-clapperboard"></i></div>
+                        <div class="stack-item" title="DaVinci Resolve" style="color: #61DAFB;"><i class="fa-solid fa-circle-nodes"></i></div>
+                        <div class="stack-item" title="Video Editing" style="color: #FF4500;"><i class="fa-solid fa-clapperboard"></i></div>
                     </div>
                 </div>
             </div>
@@ -103,31 +103,12 @@
             <div class="reveal-content">
                 <div class="section-tag">/SOCIAL_PROOF</div>
                 <h2 class="big-section-label">PROVEN_RESULTS</h2>
-                
                 <div class="container-resultados-limpo">
                     <div class="metrics-label">DATA_TYPE: VERTICAL_VIDEO_RESULTS</div>
-                    <img src="resultados.png" alt="Estatísticas de Vídeos Verticais" class="imagem-limpa-final">
+                    <img src="resultados.png" alt="Estatísticas" class="imagem-limpa-final">
                 </div>
             </div>
         </section>
-
-        <div class="reveal">
-            <div class="reveal-content marquee-wrapper">
-                <div class="mascote-container float-anim">
-                    <div class="mascote-speech">RENDERING...</div>
-                    <div class="mascote">
-                        <div class="mascote-eye"></div>
-                        <div class="mascote-antenna"></div>
-                    </div>
-                </div>
-                <div class="marquee">
-                    <div class="marquee-content">
-                        DYNAMIC CUTS • COLOR GRADING • VFX • MOTION • 4K RENDER • UNREAL ENGINE 5 • BLENDER • DA VINCI RESOLVE • CHAOS PHYSICS • NIAGARA VFX • 
-                        DYNAMIC CUTS • COLOR GRADING • VFX • MOTION • 4K RENDER • UNREAL ENGINE 5 • BLENDER • DA VINCI RESOLVE • CHAOS PHYSICS • NIAGARA VFX • 
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <section class="work-section">
             <h2 class="big-section-label">SELECTED_WORKS</h2>
@@ -135,22 +116,17 @@
                 <div class="reveal">
                     <div class="reveal-content video-card">
                         <div class="video-window">
-                            <div class="win-bar">
-                                <span class="win-title">SHOWREEL_VFX.MP4</span>
-                            </div>
+                            <div class="win-bar"><span class="win-title">SHOWREEL_VFX.MP4</span></div>
                             <div class="video-wrapper">
-                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Yd1m6O6p6Mc?autoplay=1&mute=1&loop=1&playlist=Yd1m6O6p6Mc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Yd1m6O6p6Mc?autoplay=1&mute=1&loop=1&playlist=Yd1m6O6p6Mc" frameborder="0" allowfullscreen></iframe>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="reveal">
                     <div class="reveal-content video-card">
                         <div class="video-window">
-                            <div class="win-bar">
-                                <span class="win-title">PROJECT_02_EDIT.MP4</span>
-                            </div>
+                            <div class="win-bar"><span class="win-title">PROJECT_02_EDIT.MP4</span></div>
                             <div class="video-wrapper">
                                 <video autoplay muted loop playsinline>
                                     <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-height-of-a-drone-41485-large.mp4" type="video/mp4">
@@ -181,17 +157,7 @@
                 if (entry.isIntersecting) entry.target.classList.add('active');
             });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        document.addEventListener('mousemove', (e) => {
-            const frame = document.getElementById('parallax-target');
-            if (frame && window.innerWidth > 1000) {
-                const x = (e.clientX - window.innerWidth / 2) * 0.01;
-                const y = (e.clientY - window.innerHeight / 2) * 0.01;
-                frame.style.transform = `perspective(1000px) rotateY(${x}deg) rotateX(${-y}deg)`;
-            }
-        });
     </script>
 </body>
 </html>

@@ -22,13 +22,8 @@ body { background: var(--white); font-family: 'Inter', sans-serif; overflow-x: h
 .hero-grid { display: grid; grid-template-columns: 1.5fr 1fr; border-bottom: 10px solid var(--dark); }
 .hero-main-title { padding: 60px; }
 .terminal-tag { font-family: 'Space Mono'; background: var(--dark); color: white; display: inline-block; padding: 2px 8px; font-size: 12px; margin-bottom: 10px; }
-
-.giant-text { 
-    font-size: clamp(3rem, 11vw, 13rem); 
-    font-weight: 900; line-height: 0.8; letter-spacing: -6px; 
-}
+.giant-text { font-size: clamp(3rem, 11vw, 13rem); font-weight: 900; line-height: 0.8; letter-spacing: -6px; }
 .giant-text span { color: var(--ocre); }
-
 .hero-footer-tags { display: flex; gap: 20px; margin-top: 40px; font-family: 'Space Mono'; font-size: 11px; font-weight: 700; }
 
 .hero-sidebar-info { border-left: 10px solid var(--dark); display: flex; flex-direction: column; }
@@ -57,22 +52,26 @@ body { background: var(--white); font-family: 'Inter', sans-serif; overflow-x: h
 .stack-item { width: 35px; }
 .stack-item img { width: 100%; }
 
+/* Seção de PROVEN RESULTS Limpa */
 .work-section { padding: 80px; border-bottom: 10px solid var(--dark); }
 .big-section-label { font-size: clamp(2.5rem, 10vw, 5rem); font-weight: 900; margin-bottom: 40px; }
-.proof-image-wrapper {
+
+.proof-image-clean {
     position: relative;
-    border: 10px solid var(--dark);
-    max-width: 600px;
+    max-width: 800px;
     margin-top: 20px;
-    box-shadow: 20px 20px 0 var(--ocre);
-    background: var(--dark);
-}
-.proof-img { width: 100%; display: block; }
-.img-tag {
-    position: absolute; bottom: -15px; right: -15px; background: #FF0050; color: white; padding: 5px 15px;
-    font-family: 'Space Mono'; font-weight: 900; border: 3px solid var(--dark);
+    display: flex;
 }
 
+.proof-img-minimal {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: none;
+    box-shadow: none;
+}
+
+/* MARQUEE & MASCOTE */
 .marquee-wrapper { position: relative; margin: 120px 0; }
 .mascote-container { position: absolute; top: -60px; left: 15%; z-index: 100; }
 .mascote { width: 50px; height: 45px; background: var(--ocre); border: 5px solid var(--dark); position: relative; }
@@ -82,6 +81,7 @@ body { background: var(--white); font-family: 'Inter', sans-serif; overflow-x: h
 .marquee { background: var(--dark); color: white; padding: 30px 0; border-top: 5px solid var(--ocre); }
 .marquee-content { display: flex; white-space: nowrap; animation: scroll 40s linear infinite; font-family: 'Space Mono'; font-size: 2.5rem; font-weight: 900; }
 
+/* VIDEO GRID */
 .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
 .video-window { border: 10px solid var(--dark); background: #000; box-shadow: 20px 20px 0 var(--ocre); }
 .win-bar { background: var(--dark); color: white; padding: 12px; font-family: 'Space Mono'; font-size: 11px; }

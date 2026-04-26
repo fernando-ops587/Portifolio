@@ -5,26 +5,32 @@
     --white: #FFFFFF;
 }
 
-/* RESET E TRAVA DE LARGURA TOTAL */
+/* 1. RESET ABSOLUTO: Mata qualquer margem ou barra lateral */
 * { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
+    margin: 0 !important; 
+    padding: 0 !important; 
+    box-sizing: border-box !important; 
 }
 
 html, body {
-    width: 100%;
-    max-width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
     overflow-x: hidden;
     background: var(--white);
     font-family: 'Inter', sans-serif;
     color: var(--dark);
 }
 
-/* Container que ocupa a tela toda, sem margens brancas */
+/* Remove qualquer resquício das barras que eu tinha sugerido antes */
+.v-sidebar, .left-bar, .right-bar, .v-line {
+    display: none !important;
+}
+
+/* Container principal ocupando a tela INTEIRA */
 .container {
-    width: 100%;
-    max-width: 100vw;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block;
 }
 
 .noise-overlay { position: fixed; inset: 0; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.1; pointer-events: none; z-index: 2000; }
@@ -33,20 +39,17 @@ html, body {
    LAYOUT DESKTOP (TELA CHEIA)
 ========================================= */
 
-/* Hero Section */
 .hero-grid { 
     display: grid; 
-    grid-template-columns: 1.5fr 1fr; /* Proporção original */
+    grid-template-columns: 1.5fr 1fr; 
     border-bottom: 10px solid var(--dark); 
     width: 100%;
 }
 
 .hero-main-title { 
-    padding: 60px; 
+    padding: 60px !important; 
     border-right: 10px solid var(--dark); 
 }
-
-.terminal-tag { font-family: 'Space Mono'; background: var(--dark); color: white; display: inline-block; padding: 2px 8px; font-size: 12px; margin-bottom: 10px; }
 
 .giant-text { 
     font-size: clamp(3rem, 10vw, 13rem); 
@@ -55,7 +58,6 @@ html, body {
     letter-spacing: -6px; 
     text-transform: uppercase;
 }
-.giant-text span { color: var(--ocre); }
 
 .hero-sidebar-info { 
     display: flex; 
@@ -64,24 +66,26 @@ html, body {
 
 .info-block { 
     flex: 1; 
-    padding: 30px; 
+    padding: 30px !important; 
     border-bottom: 10px solid var(--dark); 
 }
-.info-block:last-child { border-bottom: none; }
+.info-block:last-child { border-bottom: none !important; }
+
 .black-block { background: var(--dark); color: white; }
 .beige-block { background: var(--ocre); }
 
 .value-small { font-size: 2.2rem; font-weight: 900; line-height: 1; }
 
-/* About Section */
+/* About Me */
 .about-grid { 
     display: grid; 
     grid-template-columns: 1fr 1fr; 
     border-bottom: 10px solid var(--dark); 
+    width: 100%;
 }
 
 .photo-container { 
-    padding: 60px; 
+    padding: 60px !important; 
     background: var(--beige); 
     border-right: 10px solid var(--dark); 
 }
@@ -91,63 +95,34 @@ html, body {
     background: var(--dark); 
     box-shadow: 20px 20px 0 var(--ocre); 
 }
-.parallax-frame img { width: 100%; display: block; filter: grayscale(1); }
 
-.bio-text-container { padding: 60px; }
-.section-title { font-size: clamp(2rem, 8vw, 4rem); font-weight: 900; margin-bottom: 20px; }
-
-/* Tech Stack */
-.tech-stack-black { display: flex; gap: 20px; margin-top: 20px; flex-wrap: wrap; }
-.stack-item { width: 40px; height: 40px; }
-.stack-item img { width: 100%; height: auto; }
+.bio-text-container { padding: 60px !important; }
 
 /* Resultados e Vídeos */
-.work-section { padding: 80px; border-bottom: 10px solid var(--dark); }
+.work-section { padding: 80px !important; border-bottom: 10px solid var(--dark); width: 100%; }
 .video-grid { 
     display: grid; 
     grid-template-columns: 1fr 1fr; 
-    gap: 60px; 
-    padding: 60px; 
+    gap: 60px !important; 
+    padding: 60px !important; 
+    width: 100%;
 }
-.video-window { border: 10px solid var(--dark); box-shadow: 20px 20px 0 var(--ocre); background: #000; }
-.video-wrapper { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; }
 
-/* Marquee */
-.marquee { background: var(--dark); color: white; padding: 30px 0; border-top: 10px solid var(--ocre); overflow: hidden; }
-.marquee-content { display: flex; white-space: nowrap; animation: scroll 40s linear infinite; font-family: 'Space Mono'; font-size: 2.5rem; font-weight: 900; }
-
-@keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.video-window { border: 10px solid var(--dark); box-shadow: 20px 20px 0 var(--ocre); }
 
 /* =========================================
-   AJUSTE MOBILE (LIMPO E SEM VAZAMENTO)
+   MOBILE (SIMPLIFICADO)
 ========================================= */
 @media (max-width: 1024px) {
     .hero-grid, .about-grid, .video-grid { 
         display: block !important; 
-        width: 100%;
     }
     
-    .hero-main-title { 
-        border-right: none; 
-        border-bottom: 10px solid var(--dark); 
-        padding: 40px 20px;
+    .hero-main-title, .photo-container, .bio-text-container, .work-section, .info-block {
+        padding: 40px 20px !important;
+        border-right: none !important;
     }
     
-    .giant-text { 
-        font-size: 4.5rem !important; 
-        letter-spacing: -2px; 
-    }
-
-    .photo-container { 
-        border-right: none; 
-        border-bottom: 10px solid var(--dark); 
-        padding: 30px 20px;
-    }
-
-    .bio-text-container, .work-section, .info-block { 
-        padding: 40px 20px !important; 
-    }
-
-    .video-grid { padding: 20px; }
-    .video-window { margin-bottom: 40px; box-shadow: 10px 10px 0 var(--ocre); }
+    .giant-text { font-size: 4.5rem !important; }
+    .video-grid { padding: 20px !important; }
 }

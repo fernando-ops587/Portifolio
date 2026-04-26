@@ -5,161 +5,136 @@
     --white: #FFFFFF;
 }
 
-/* =========================================
-   RESET TOTAL E TRAVA DE LARGURA
-========================================= */
+/* RESET TOTAL - SEGURANÇA CONTRA VAZAMENTOS */
 * { 
     margin: 0; 
     padding: 0; 
     box-sizing: border-box; 
-    cursor: crosshair; 
 }
 
 html, body {
     width: 100%;
-    max-width: 100vw;
-    overflow-x: hidden; /* Corta qualquer vazamento lateral na raiz */
+    max-width: 100%;
+    overflow-x: hidden;
     background: var(--white);
     font-family: 'Inter', sans-serif;
     color: var(--dark);
+    -webkit-font-smoothing: antialiased;
 }
 
-/* Garante que NENHUMA imagem ou vídeo quebre a tela */
-img, video, iframe {
-    max-width: 100%;
-    height: auto;
-    display: block;
+/* Container de segurança para o conteúdo */
+.container {
+    width: 100%;
+    position: relative;
 }
 
 .noise-overlay { position: fixed; inset: 0; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.1; pointer-events: none; z-index: 2000; }
 
-/* =========================================
-   DESKTOP STYLES
-========================================= */
+/* SIDEBARS (Desktop apenas) */
 .v-sidebar { position: fixed; top: 0; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 500; font-family: 'Space Mono'; font-size: 10px; font-weight: 700; }
 .left-bar { left: 20px; } .right-bar { right: 20px; }
 .v-line { width: 1px; height: 60px; background: var(--dark); margin: 15px 0; }
 .v-sidebar span { writing-mode: vertical-rl; transform: rotate(180deg); opacity: 0.4; }
 
-.container { width: 100%; overflow-x: hidden; }
+/* =========================================
+   LAYOUT DESKTOP (O GRID QUE FUNCIONA)
+========================================= */
 
-/* HERO */
+/* Hero */
 .hero-grid { display: grid; grid-template-columns: 1.5fr 1fr; border-bottom: 10px solid var(--dark); }
-.hero-main-title { padding: 60px; }
+.hero-main-title { padding: 60px; border-right: 10px solid var(--dark); }
 .terminal-tag { font-family: 'Space Mono'; background: var(--dark); color: white; display: inline-block; padding: 2px 8px; font-size: 12px; margin-bottom: 10px; }
 .giant-text { font-size: clamp(3rem, 11vw, 13rem); font-weight: 900; line-height: 0.8; letter-spacing: -6px; }
 .giant-text span { color: var(--ocre); }
-.hero-footer-tags { display: flex; gap: 20px; margin-top: 40px; font-family: 'Space Mono'; font-size: 11px; font-weight: 700; }
 
-.hero-sidebar-info { border-left: 10px solid var(--dark); display: flex; flex-direction: column; }
+.hero-sidebar-info { display: flex; flex-direction: column; }
 .info-block { flex: 1; padding: 30px; border-bottom: 10px solid var(--dark); }
 .black-block { background: var(--dark); color: white; }
 .beige-block { background: var(--ocre); }
-.label { font-family: 'Space Mono'; font-size: 11px; }
 .value-small { font-size: 2rem; font-weight: 900; line-height: 1; }
-.tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-.tag-cloud span { font-family: 'Space Mono'; font-size: 10px; border: 1px solid var(--dark); padding: 2px 5px; }
 
-/* ABOUT */
+/* About */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 10px solid var(--dark); }
 .photo-container { padding: 60px; background: var(--beige); border-right: 10px solid var(--dark); }
 .parallax-frame { border: 10px solid var(--dark); background: var(--dark); position: relative; box-shadow: 20px 20px 0 var(--ocre); overflow: hidden; }
-.parallax-frame img { width: 100%; display: block; filter: grayscale(1); }
-.frame-scanner { position: absolute; top: 0; width: 100%; height: 2px; background: var(--ocre); animation: scan 3s linear infinite; z-index: 5; }
+.parallax-frame img { width: 100%; filter: grayscale(1); }
 
 .bio-text-container { padding: 60px; }
 .section-title { font-size: clamp(2rem, 8vw, 4rem); font-weight: 900; margin-bottom: 20px; }
 .main-bio { font-size: 1.4rem; line-height: 1.3; margin-bottom: 30px; }
-.stats-grid { display: flex; gap: 30px; margin-bottom: 30px; }
-.stat-box { display: flex; flex-direction: column; }
-.stat-num { font-size: 2.5rem; font-weight: 900; border-bottom: 4px solid var(--ocre); }
-.stat-desc { font-family: 'Space Mono'; font-size: 10px; font-weight: 700; }
 
-.tech-stack-black { display: flex; gap: 20px; margin-top: 20px; align-items: center; }
-.stack-item { width: 35px; height: 35px; display: flex; justify-content: center; align-items: center; }
+/* Tech Stack - Ícones controlados */
+.tech-stack-black { display: flex; gap: 20px; margin-top: 20px; flex-wrap: wrap; }
+.stack-item { width: 35px; height: 35px; }
+.stack-item img { width: 100%; height: auto; }
+.stack-item i { font-size: 32px; }
 
-/* RESULTS */
+/* Resultados Section */
 .work-section { padding: 80px; border-bottom: 10px solid var(--dark); }
-.big-section-label { font-size: clamp(2.5rem, 10vw, 5rem); font-weight: 900; margin-bottom: 20px; }
-.metrics-label { font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; color: var(--ocre); margin-bottom: 15px; display: flex; align-items: center; }
-.metrics-label::before { content: ""; display: inline-block; width: 8px; height: 8px; background-color: var(--ocre); margin-right: 10px; }
+.big-section-label { font-size: clamp(2.5rem, 10vw, 5rem); font-weight: 900; margin-bottom: 40px; }
+.container-resultados-limpo { width: 100%; max-width: 800px; }
+.imagem-limpa-final { width: 100% !important; border: none !important; box-shadow: none !important; }
 
-.container-resultados-limpo { margin-top: 20px; width: 100%; max-width: 800px; display: block; }
-.imagem-limpa-final { width: 100% !important; height: auto !important; border: none !important; box-shadow: none !important; outline: none !important; background: transparent !important; }
-
-/* VIDEOS */
-.video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+/* Vídeos */
+.video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; padding: 0 60px 60px 60px; }
 .video-window { border: 10px solid var(--dark); background: #000; box-shadow: 20px 20px 0 var(--ocre); }
-.win-bar { background: var(--dark); color: white; padding: 12px; font-family: 'Space Mono'; font-size: 11px; }
 .video-wrapper { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; }
 
-/* FOOTER */
-.footer-brutal { padding: 100px 60px; display: flex; flex-direction: column; align-items: center; }
-.footer-email { font-size: clamp(1.2rem, 5vw, 5rem); font-weight: 900; color: var(--ocre); word-break: break-all; margin-bottom: 20px; }
-.footer-socials { display: flex; gap: 20px; font-family: 'Space Mono'; font-weight: 700; }
+/* =========================================
+   AJUSTE MOBILE (A CORREÇÃO CIRÚRGICA)
+========================================= */
+
+@media (max-width: 1024px) {
+    .v-sidebar { display: none; } /* Some com as barras laterais */
+
+    /* Hero e About viram colunas únicas */
+    .hero-grid, .about-grid { display: block; }
+    
+    .hero-main-title { 
+        padding: 40px 20px; 
+        border-right: none; 
+        width: 100%;
+        overflow: hidden; 
+    }
+
+    /* Reduz o texto gigante para não explodir a largura */
+    .giant-text { 
+        font-size: 4.2rem !important; 
+        letter-spacing: -2px; 
+        line-height: 1;
+        word-break: break-word;
+    }
+
+    .hero-sidebar-info { border-top: none; }
+    .info-block { padding: 25px 20px; border-bottom: 10px solid var(--dark); }
+
+    .photo-container { 
+        padding: 40px 20px; 
+        border-right: none; 
+        border-bottom: 10px solid var(--dark); 
+    }
+    .parallax-frame { box-shadow: 10px 10px 0 var(--ocre); }
+    
+    .bio-text-container, .work-section { padding: 40px 20px; }
+
+    /* Fix Ícones Gigantes */
+    .stack-item { width: 30px !important; height: 30px !important; }
+    .stack-item i { font-size: 28px !important; }
+
+    /* Fix Vídeos que vazam */
+    .video-grid { 
+        display: block; 
+        padding: 20px; 
+    }
+    .video-window { 
+        margin-bottom: 40px; 
+        box-shadow: 10px 10px 0 var(--ocre); 
+    }
+
+    .footer-brutal { padding: 60px 20px; }
+}
 
 /* MARQUEE */
-.marquee-wrapper { position: relative; margin: 120px 0; overflow: hidden; width: 100%; }
-.mascote-container { position: absolute; top: -60px; left: 15%; z-index: 100; }
-.mascote { width: 50px; height: 45px; background: var(--ocre); border: 5px solid var(--dark); position: relative; }
-.mascote-eye { position: absolute; top: 12px; left: 12px; width: 16px; height: 5px; background: var(--dark); box-shadow: 0 12px 0 var(--dark); }
-.mascote-antenna { position: absolute; top: -18px; left: 22px; width: 4px; height: 18px; background: var(--dark); }
-.mascote-speech { background: white; border: 2px solid var(--dark); padding: 4px 8px; font-family: 'Space Mono'; font-size: 10px; font-weight: 900; margin-bottom: 5px; }
-.marquee { background: var(--dark); color: white; padding: 30px 0; border-top: 5px solid var(--ocre); }
-.marquee-content { display: flex; white-space: nowrap; animation: scroll 40s linear infinite; font-family: 'Space Mono'; font-size: 2.5rem; font-weight: 900; }
-
+.marquee { background: var(--dark); color: white; padding: 25px 0; overflow: hidden; border-top: 10px solid var(--ocre); border-bottom: 10px solid var(--dark); }
+.marquee-content { display: flex; white-space: nowrap; animation: scroll 40s linear infinite; font-family: 'Space Mono'; font-size: 2rem; font-weight: 900; }
 @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-@keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
-
-/* =========================================
-   O SALVADOR DO MOBILE (CORREÇÃO TOTAL)
-========================================= */
-@media (max-width: 1024px) {
-    .v-sidebar { display: none; }
-    
-    /* Transforma tudo em blocos únicos que empilham 100% retos */
-    .hero-grid, .about-grid, .video-grid { 
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-    }
-    
-    /* Zera os paddings gigantes que empurravam a tela pra fora */
-    .hero-main-title, .info-block, .photo-container, .bio-text-container, .work-section, .footer-brutal { 
-        padding: 30px 20px !important; 
-        width: 100% !important;
-        border-left: none !important;
-        border-right: none !important;
-    }
-
-    /* Fontes fluidas que encolhem junto com o celular, impedindo quebras */
-    .giant-text { 
-        font-size: clamp(3rem, 12vw, 5rem) !important; 
-        letter-spacing: -2px !important; 
-        line-height: 0.9 !important;
-        word-wrap: break-word !important; 
-    }
-    .value-small { font-size: clamp(1.5rem, 8vw, 2.5rem) !important; }
-    .big-section-label { font-size: clamp(2rem, 10vw, 3rem) !important; word-wrap: break-word; }
-    .section-title { font-size: clamp(2rem, 10vw, 3rem) !important; }
-    
-    /* Ícones no tamanho perfeito (nem gigantes, nem sumindo) */
-    .tech-stack-black { gap: 15px; align-items: center; }
-    .stack-item { width: 30px !important; height: 30px !important; }
-    .stack-item i { font-size: 30px !important; }
-    
-    /* Vídeos e Sombras contidas */
-    .video-grid { padding: 0 !important; gap: 40px !important; }
-    .video-window { 
-        box-shadow: 8px 8px 0 var(--ocre) !important; 
-        border-width: 5px !important;
-        margin-bottom: 20px;
-    }
-    
-    .parallax-frame { box-shadow: 10px 10px 0 var(--ocre) !important; border-width: 5px !important; }
-
-    /* Animação e letreiro do meio */
-    .marquee-wrapper { margin: 80px 0 !important; }
-    .marquee-content { font-size: 1.5rem !important; }
-    .mascote-container { left: 5% !important; }
-}

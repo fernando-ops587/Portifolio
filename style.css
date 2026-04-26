@@ -7,9 +7,9 @@ body { background: var(--white); font-family: 'Inter', sans-serif; overflow-x: h
 
 .noise-overlay { position: fixed; inset: 0; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.1; pointer-events: none; z-index: 2000; }
 
-/* A ÚNICA MUDANÇA ESTÁ AQUI: */
+/* REMOVENDO AS BARRAS BRANCAS LATERAIS */
 .v-sidebar { 
-    display: none; /* Isso remove as barras laterais que você pediu */
+    display: none; 
 }
 
 .left-bar { left: 20px; } .right-bar { right: 20px; }

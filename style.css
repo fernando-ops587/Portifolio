@@ -1,3 +1,10 @@
+/* 1. RESET RADICAL - REMOVE TODA MARGEM BRANCA */
+* { 
+    margin: 0 !important; 
+    padding: 0 !important; 
+    box-sizing: border-box !important; 
+}
+
 :root { 
     --ocre: #A6997A; 
     --beige: #D9D2C5; 
@@ -5,45 +12,32 @@
     --white: #FFFFFF;
 }
 
-/* 1. RESET ABSOLUTO: Mata qualquer margem ou barra lateral */
-* { 
-    margin: 0 !important; 
-    padding: 0 !important; 
-    box-sizing: border-box !important; 
-}
-
 html, body {
     width: 100% !important;
     max-width: 100% !important;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Garante que nada escape para o lado */
     background: var(--white);
     font-family: 'Inter', sans-serif;
     color: var(--dark);
 }
 
-/* Remove qualquer resquício das barras que eu tinha sugerido antes */
-.v-sidebar, .left-bar, .right-bar, .v-line {
+/* 2. REMOVE AS BARRAS LATERAIS DE VEZ */
+.left-bar, .right-bar, [class*="sidebar"], [class*="v-sidebar"], [class*="v-line"] {
     display: none !important;
 }
 
-/* Container principal ocupando a tela INTEIRA */
+/* 3. CONTAINER TOTAL */
 .container {
     width: 100% !important;
     max-width: 100% !important;
-    display: block;
 }
 
-.noise-overlay { position: fixed; inset: 0; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.1; pointer-events: none; z-index: 2000; }
-
-/* =========================================
-   LAYOUT DESKTOP (TELA CHEIA)
-========================================= */
-
+/* 4. GRID DO PC (OCUPANDO 100% DA TELA) */
 .hero-grid { 
     display: grid; 
     grid-template-columns: 1.5fr 1fr; 
     border-bottom: 10px solid var(--dark); 
-    width: 100%;
+    width: 100% !important;
 }
 
 .hero-main-title { 
@@ -59,29 +53,15 @@ html, body {
     text-transform: uppercase;
 }
 
-.hero-sidebar-info { 
-    display: flex; 
-    flex-direction: column; 
-}
-
-.info-block { 
-    flex: 1; 
-    padding: 30px !important; 
-    border-bottom: 10px solid var(--dark); 
-}
+.hero-sidebar-info { display: flex; flex-direction: column; }
+.info-block { flex: 1; padding: 30px !important; border-bottom: 10px solid var(--dark); }
 .info-block:last-child { border-bottom: none !important; }
 
-.black-block { background: var(--dark); color: white; }
-.beige-block { background: var(--ocre); }
-
-.value-small { font-size: 2.2rem; font-weight: 900; line-height: 1; }
-
-/* About Me */
 .about-grid { 
     display: grid; 
     grid-template-columns: 1fr 1fr; 
     border-bottom: 10px solid var(--dark); 
-    width: 100%;
+    width: 100% !important;
 }
 
 .photo-container { 
@@ -90,15 +70,9 @@ html, body {
     border-right: 10px solid var(--dark); 
 }
 
-.parallax-frame { 
-    border: 10px solid var(--dark); 
-    background: var(--dark); 
-    box-shadow: 20px 20px 0 var(--ocre); 
-}
-
 .bio-text-container { padding: 60px !important; }
 
-/* Resultados e Vídeos */
+/* 5. VÍDEOS E RESULTADOS */
 .work-section { padding: 80px !important; border-bottom: 10px solid var(--dark); width: 100%; }
 .video-grid { 
     display: grid; 
@@ -108,21 +82,14 @@ html, body {
     width: 100%;
 }
 
-.video-window { border: 10px solid var(--dark); box-shadow: 20px 20px 0 var(--ocre); }
-
-/* =========================================
-   MOBILE (SIMPLIFICADO)
-========================================= */
+/* 6. AJUSTE MOBILE (SÓ PARA NÃO QUEBRAR O QUE SOBROU) */
 @media (max-width: 1024px) {
     .hero-grid, .about-grid, .video-grid { 
         display: block !important; 
     }
-    
     .hero-main-title, .photo-container, .bio-text-container, .work-section, .info-block {
         padding: 40px 20px !important;
         border-right: none !important;
     }
-    
-    .giant-text { font-size: 4.5rem !important; }
-    .video-grid { padding: 20px !important; }
+    .giant-text { font-size: 15vw !important; }
 }
